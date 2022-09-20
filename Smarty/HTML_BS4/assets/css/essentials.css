@@ -12059,8 +12059,8 @@ div.testimonial p {
 }
 
 div.testimonial>figure>img {
-	width:65px;
-	height:65px;
+	width:150px;
+	height:150px;
 
 	-webkit-border-radius: 3px;
 	   -moz-border-radius: 3px;
