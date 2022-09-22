@@ -27,6 +27,8 @@
 		<!-- PAGE LEVEL SCRIPTS -->
 		<link href="assets/css/header-1.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/color_scheme/red.css" rel="stylesheet" type="text/css" id="color_scheme" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 	</head>
     <script type="text/javascript" src="quote.js"></script>
     
@@ -211,11 +213,11 @@
            
            
            
-            <div class="col-md-4">
+            <div id = "test" class="col-md-4">
                 <label for="contact_department">Type of Building</label>
                 <select class="form-control pointer" name="contact[department]">
                     <option value="">--- Select ---</option>
-                    <option value="Marketing"id="residential">Residential</option>
+                    <option id="res"value = "residential">Residential</option>
                     <option value="Webdesign"id="commercial">Commercial</option>
                     <option value="Architecture"id="corporate">Corporate</option>
                     <option value="Architecture"id="hybrid">Hybrid</option>
