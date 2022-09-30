@@ -30,7 +30,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 	</head>
-    <script type="text/javascript" src="quote.js"></script>
+    
     
    
 
@@ -66,7 +66,7 @@
 
 					<div class="col-md-4">
 						<h6><i class="icon-heart"></i> WHY SMARTY?</h6>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et, iaculis ac massa. </p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convhiddenis et, iaculis ac massa. </p>
 					</div>
 
 					<div class="col-md-4">
@@ -207,23 +207,155 @@
 
 					</div>
 				</header>
+				<br><br><br>
 				<!-- /Top Nav -->
+				<!--javascript-->
+				
+        <!-- wrapper -->
+        <div id="wrapper">
 
-			</div>
-           
-           
-           
-            <div id = "test" class="col-md-4">
-                <label for="contact_department">Type of Building</label>
-                <select class="form-control pointer" name="contact[department]">
-                    <option value="">--- Select ---</option>
-                    <option id="res"value = "residential">Residential</option>
-                    <option value="Webdesign"id="commercial">Commercial</option>
-                    <option value="Architecture"id="corporate">Corporate</option>
-                    <option value="Architecture"id="hybrid">Hybrid</option>
-                </select>
+            <div class="container">
+                <br>
+
+                <div class="form">
+                    <label>Type of Building?</label>
+                    <select class="form" id="typeOfBuilding">
+                        <option id="select-building-type" value="selected">--- Select Building Type ---</option>
+                        <option id="residential" value="residential">Residential</option>
+                        <option id="commercial" value="commercial">Commercial</option>
+                        <option id="corporate" value="corporate">Corporate</option>
+                        <option id="hybrid" value="hybrid">Hybrid</option>
+                    </select>
+                </div><br />
+                <form action="" method="" enctype="multipart/form-data" id="elevator">
+                    <fieldset>
+                        <input type="hidden" name="action" value="contact_send" />
+
+
+                        <div class="row">
+                            <div class="col-md-8" id="noOfApartment" style="display:none">
+                                <label>The number of apartments in the building</label>
+                                <input name="numofapt" id="numofapt" type="text" min="0" max="1000"
+                                onchange="update()"  class="form-control stepper">
+                            </div>
+
+                            <div class="col-md-8" id="noOfFloor" style="display:none">
+                                <label>The number of floors contained in the building (excluding basement)</label>
+                                <input name="numoffloors" id="numoffloors" type="number" min="0" max="500"
+                                onchange="update()"  class="form-control">
+                            </div>
+                            <div class="col-md-8" id="noOfBase" style="display:none">
+                                <label>The number of basements contained in the building</label>
+                                <input name="numofbase" id="numofbase" type="number" min="0" max="100"
+                                onchange="update()"  class="form-control">
+                            </div>
+                            <div class="col-md-8" id="noOfPark" style="display:none">
+                                <label>The number of parking space available</label>
+                                <input name="numofpark" id="numofpark" type="number" min="0" max="100"
+                                onchange="update()"  class="form-control">
+                            </div>
+                            <div class="col-md-8" id="noOfBusiness" style="display:none">
+                                <label>The number of business</label>
+                                <input name="numofcomp" id="numofcomp" type="number" min="0" max="100"
+                                onchange="update()"  class="form-control">
+                            </div>
+                            <div class="col-md-8" id="noOfEle" style="display:none">
+                                <label>The Number of Elevators Needed</label>
+                                <input name="numofelev" id="numofelev" type="number" min="0" max="1000"
+                                onchange="update()" class="form-control">
+                            </div>
+                            <div class="col-md-8" id="noOfOccupents" style="display:none">
+                                <label>The number of occupants</label>
+                                <input name="maxocc" id="maxocc" type="number" min="0" max="1000" onchange="update()"
+                                 class="form-control">
+                            </div>
+
+                          
+
+                            <div class="col-md-8" id="type_elevator">
+                                <label>Type of Elevator</label>
+                            </div>
+                            <div class="col-md-8" id="standard">
+                                <label class="radio">
+                                    <input type="radio" name="liftCage" value="standard" checked="false" onclick="update()">
+                                    <i></i> Standard
+                                </label>
+                            </div>
+                            <div class="col-md-8" id="premium">
+                                <label class="radio">
+                                    <input type="radio" name="liftCage" value="premium" onclick="update()">
+                                    <i></i> Premium
+                                </label>
+                            </div>
+                            <div class="col-md-8" id="excelium">
+                                <label class="radio">
+                                    <input type="radio" name="liftCage" value="excelium" onclick="update()">
+                                    <i></i> Excelium
+                                </label>
+                            </div>
+
+                        </div>
+
+                    </fieldset>
+                </form>
+
+
+
+                <!-- /FORM -->
+
+
+
+                <!-- INFO -->
+                <form action="" method="" enctype="multipart/form-data" id="results">
+                    <fieldset>
+                        <input type="hidden" name="action" value="contact_send" />
+                        <div class="col-md-8" id="elevator-amount">
+                            <label>Elevators Needed
+                                <input type="text" id="elevatorNum" value="" min="0" max="1000" class="form-control"
+                                onchange="update()"  readonly>
+                            </label>
+                        </div>
+                        <div class="col-md-8" id="elevator-unit-price">
+                            <label>Elevator Unit Price
+                                <input type="text" id="unitPrice" value="" min="0" max="1000" class="form-control"
+                                onchange="update()"   readonly>
+                            </label>
+                        </div>
+                        <div class="col-md-8" id="elevator-total-price">
+                            <label>Total Price of Elevators
+                                <input type="text" id="totalPriceElevators" value="" min="0" max="1000"
+                                onchange="update()"  class="form-control" readonly>
+                            </label>
+                        </div>
+                        <div class="col-md-8" id="installation-fees">
+                            <label>Installation Fees
+                                <input type="text" id="installFees" value="" min="0" max="1000" class="form-control"
+                                onchange="update()"  readonly>
+                            </label>
+                        </div>
+                        <div class="col-md-8" id="final-price">
+                            <label>Final Price of Elevators
+                                <input type="text" id="totalPrice" value="" min="0" max="1000" class="form-control"
+                                onchange="update()"   readonly>
+                            </label>
+                        </div>
+
             </div>
-            
+            </fieldset>
+            </form>
+            <!-- /INFO -->
+
+        </div>
+
+    </div>
+    </section>
+	
+	
+				 
+
+
+           
+
            
             
             
@@ -386,7 +518,7 @@
 
 							<h3 class="letter-spacing-1">WHY US?</h3>
 
-							<!-- Small Description -->
+							<!-- Smhidden Description -->
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur imperdiet hendrerit volutpat. Sed in nunc nec ligula consectetur mollis in vel justo. Vestibulum ante ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur imperdiet hendrerit volutpat.
 							</p>
@@ -423,12 +555,12 @@
 
 				<div class="copyright">
 					<div class="container">
-						<ul class="float-right m-0 list-inline mobile-block">
+						<ul class="float-right m-0 list-inline mobile-none">
 							<li><a href="#">Terms &amp; Conditions</a></li>
 							<li>&bull;</li>
 							<li><a href="#">Privacy</a></li>
 						</ul>
-						&copy; All Rights Reserved, Company LTD
+						&copy; hidden Rights Reserved, Company LTD
 					</div>
 				</div>
 
@@ -497,5 +629,7 @@
 			});
 
 		</script>
+		
 	</body>
+	<script type="text/javascript" src="quotemain.js"></script>
 </html>
